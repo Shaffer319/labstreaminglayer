@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Native.iml" filepath="$PROJECT_DIR$/Native.iml" />
+      <module fileurl="file://$PROJECT_DIR$/liblslcmake/liblslcmake.iml" filepath="$PROJECT_DIR$/liblslcmake/liblslcmake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/liblslnative/liblslnative.iml" filepath="$PROJECT_DIR$/liblslnative/liblslnative.iml" />
+    </modules>
+  </component>
+</project>
