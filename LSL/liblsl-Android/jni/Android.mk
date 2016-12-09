@@ -28,7 +28,7 @@ FILE_LIST += $(wildcard $(LOCAL_PATH)/../../liblsl/external/src/serialization/sr
 FILE_LIST += $(wildcard $(LOCAL_PATH)/../../liblsl/external/src/system/src/*.cpp)
 FILE_LIST += $(wildcard $(LOCAL_PATH)/../../liblsl/external/src/thread/src/*.cpp)
 FILE_LIST += $(wildcard $(LOCAL_PATH)/../../liblsl/external/src/thread/src/pthread/*.cpp)
-FILE_LIST += $(wildcard $(LOCAL_PATH)/liblsl_wrap_java.cxx)
+# FILE_LIST += $(wildcard $(LOCAL_PATH)/liblsl_wrap_java.cxx) # this was removed because it was using JNA and not SWIG
 LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
 
 
