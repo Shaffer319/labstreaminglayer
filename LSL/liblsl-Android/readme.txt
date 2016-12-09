@@ -26,3 +26,28 @@ The ${Project_Name} app should appear on your device. When selected, it opens a 
 Note that you need to have Python set up for use on Android to build the Python interface; by default the file liblsl_wrap_python.cxx is not included in the build sources (in Android.mk).
 
 I (Matthew Grivich) have not tested the Python interface for Android, but I have left the comments and files from Christian Kothe.
+
+// Android Studio Build 12/09/2016
+Added an android stuido project called native. This project uses the Android Studio 2.22 IDE to build liblsl.so for Android.
+There are 2 example. 
+   liblslcmake
+       Uses android studio + gradle + cmake to build the project.
+   liblslnative
+       Uses ndkbuild and the original Android.mk file with the SWIG generated file removed.
+
+To compile for different architectures other than armeabi-v7a you can remove
+android {
+    externalNativeBuild {
+        abiFilters "armeabi-v7a" // Add other filters or removed to build all
+    }
+}
+running the gradle task <project_name>->Tasks->other->externalNativeBuild<build_flavor_name> should build the liblsl.so file for Andorid. You can include this as a module in your project to build it in or grab the so and move it to the correct <project>src/main/jniLib/<architecture>/liblsl.so dir
+
+jniLibs.srcDirs = ['jniLibs']
+jni.srcDirs = []
+
+// *.so location
+<module_dir>/build/outputs/aar/liblslcmake-<flavor_type>.aar is the android lib that it outputs
+<module_dir>\build\intermediates\cmake\debug\obj\armeabi-v7a\
+
+<module_dir>\liblslnative\build\intermediates\bundles\debug\jni\armeabi-v7a\liblslAndroid.so

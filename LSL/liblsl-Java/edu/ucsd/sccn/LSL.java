@@ -452,7 +452,7 @@ public class LSL {
      */
     public static StreamInfo[] resolve_stream(String prop, String value, int minimum, double timeout)
     {
-        Pointer[] buf = new Pointer[1024]; int num = inst.lsl_resolve_byprop(buf, (long)buf.length, prop, value, minimum, timeout);
+        Pointer[] buf = new Pointer[1024]; int num = inst.lsl_resolve_byprop(buf, buf.length, prop, value, minimum, timeout);
         StreamInfo[] res = new StreamInfo[num];
         for (int k = 0; k < num; k++)
             res[k] = new StreamInfo(buf[k]);
@@ -902,7 +902,7 @@ public class LSL {
         int lsl_push_sample_buftp(Pointer obj, byte[][] data, int[] lengths, double timestamp, int pushthrough);
         int lsl_push_chunk_ftp(Pointer obj, float[] data, long data_elements, double timestamp, int pushthrough);
         int lsl_push_chunk_ftnp(Pointer obj, float[] data, long data_elements, double[] timestamps, int pushthrough);
-        int lsl_push_chunk_dtp(Pointer obj, double[] data, long data_elements, double timestamp, int pushthrough);       
+        int lsl_push_chunk_dtp(Pointer obj, double[] data, long data_elements, double timestamp, int pushthrough);
         int lsl_push_chunk_dtnp(Pointer obj, double[] data, long data_elements, double[] timestamps, int pushthrough);
         int lsl_push_chunk_itp(Pointer obj, int[] data, long data_elements, double timestamp, int pushthrough);
         int lsl_push_chunk_itnp(Pointer obj, int[] data, long data_elements, double[] timestamps, int pushthrough);
@@ -912,14 +912,14 @@ public class LSL {
         int lsl_push_chunk_ctnp(Pointer obj, byte[] data, long data_elements, double[] timestamps, int pushthrough);
         int lsl_push_chunk_strtp(Pointer obj, String[] data, long data_elements, double timestamp, int pushthrough);
         int lsl_push_chunk_strtnp(Pointer obj, String[] data, long data_elements, double[] timestamps, int pushthrough);
-        int lsl_push_chunk_buftp(Pointer obj, byte[][] data, long[] lengths, long data_elements, double timestamp, int pushthrough);        
-        int lsl_push_chunk_buftnp(Pointer obj, byte[][] data, long[] lengths, long data_elements, double[] timestamps, int pushthrough);            
+        int lsl_push_chunk_buftp(Pointer obj, byte[][] data, long[] lengths, long data_elements, double timestamp, int pushthrough);
+        int lsl_push_chunk_buftnp(Pointer obj, byte[][] data, long[] lengths, long data_elements, double[] timestamps, int pushthrough);
         int lsl_have_consumers(Pointer obj);
         int lsl_wait_for_consumers(Pointer obj);
         Pointer lsl_get_info(Pointer obj);
         int lsl_resolve_all(Pointer[] buffer, long buffer_elements, double wait_time);
-        int lsl_resolve_byprop(Pointer[] buffer, long buffer_elements, String prop, String value, int minimum, double wait_time);
-        int lsl_resolve_bypred(Pointer[] buffer, long buffer_elements, String pred, int minimum, double wait_time);
+        int lsl_resolve_byprop(Pointer[] buffer, int buffer_elements, String prop, String value, int minimum, double wait_time);
+        int lsl_resolve_bypred(Pointer[] buffer, int buffer_elements, String pred, int minimum, double wait_time); // Changing this to an int only works till it is above the signed value.
         Pointer lsl_create_inlet(Pointer info, int max_buflen, int max_chunklen, int recover);
         void lsl_destroy_inlet(Pointer obj);
         Pointer lsl_get_fullinfo(Pointer obj, double timeout, int[] ec);
@@ -932,7 +932,7 @@ public class LSL {
         double lsl_pull_sample_s(Pointer obj, short[] buffer, int buffer_elements, double timeout, int[] ec);
         double lsl_pull_sample_c(Pointer obj, byte[] buffer, int buffer_elements, double timeout, int[] ec);
         double lsl_pull_sample_str(Pointer obj, String[] buffer, int buffer_elements, double timeout, int[] ec);
-        double lsl_pull_sample_buf(Pointer obj, byte[][] buffer, long[] buffer_lengths, int buffer_elements, double timeout, int[] ec);        
+        double lsl_pull_sample_buf(Pointer obj, byte[][] buffer, long[] buffer_lengths, int buffer_elements, double timeout, int[] ec);
         long lsl_pull_chunk_f(Pointer obj, float[] data_buffer, double[] timestamp_buffer, long data_buffer_elements, long timestamp_buffer_elements, double timeout, int[] ec);
         long lsl_pull_chunk_d(Pointer obj, double[] data_buffer, double[] timestamp_buffer, long data_buffer_elements, long timestamp_buffer_elements, double timeout, int[] ec);
         long lsl_pull_chunk_i(Pointer obj, int[] data_buffer, double[] timestamp_buffer, long data_buffer_elements, long timestamp_buffer_elements, double timeout, int[] ec);
