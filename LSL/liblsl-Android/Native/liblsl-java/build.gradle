@@ -1,0 +1,38 @@
+apply plugin: 'java'
+
+sourceSets {
+    main.java.srcDirs += ['../../../liblsl-java/']
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile files('../../../../../jna/dist/jna.jar')
+    // Todo this may need to be repackaged because the android
+    // Wants the .so file to be int
+    // xxx.jar
+    // |-jni
+    //   |- <arch>/yyy.so
+}
+
+//task builJar(type: jar) {
+//    manifest {
+//
+//    }
+//}
+
+//jar {
+////    manifest {
+////        attributes "Main-Class" : "$mainClassName"
+////    }
+//
+//    from {
+//        configurations.compile.collect {
+//            it.isDirectory() ? it : zipTree(it)
+//        }
+//    }
+//
+//}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

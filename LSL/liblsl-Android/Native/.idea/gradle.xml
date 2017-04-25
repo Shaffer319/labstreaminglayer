@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/liblsl-java" />
             <option value="$PROJECT_DIR$/liblslcmake" />
             <option value="$PROJECT_DIR$/liblslnative" />
           </set>

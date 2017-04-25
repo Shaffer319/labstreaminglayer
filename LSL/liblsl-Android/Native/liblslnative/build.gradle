@@ -30,9 +30,7 @@ android {
             path "../../jni/Android.mk"
         }
     }
-    sourceSets {
-        main.java.srcDirs += '../../../liblsl-java/'
-    }
+
 }
 
 dependencies {

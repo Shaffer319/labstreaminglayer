@@ -1,1 +1,1 @@
-include ':liblslnative', ':liblslcmake'
+include ':liblslnative', ':liblslcmake', ':liblsl-java'

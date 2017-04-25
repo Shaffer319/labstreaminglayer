@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Native.iml" filepath="$PROJECT_DIR$/Native.iml" />
+      <module fileurl="file://$PROJECT_DIR$/liblsl-java/liblsl-java.iml" filepath="$PROJECT_DIR$/liblsl-java/liblsl-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/liblslcmake/liblslcmake.iml" filepath="$PROJECT_DIR$/liblslcmake/liblslcmake.iml" />
       <module fileurl="file://$PROJECT_DIR$/liblslnative/liblslnative.iml" filepath="$PROJECT_DIR$/liblslnative/liblslnative.iml" />
     </modules>

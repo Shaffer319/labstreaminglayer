@@ -474,7 +474,7 @@ public class LSL {
      */
     public static StreamInfo[] resolve_stream(String pred, int minimum, double timeout)
     {
-        Pointer[] buf = new Pointer[1024]; int num = inst.lsl_resolve_bypred(buf, (long)buf.length, pred, minimum, timeout);
+        Pointer[] buf = new Pointer[1024]; int num = inst.lsl_resolve_bypred(buf, buf.length, pred, minimum, timeout);
         StreamInfo[] res = new StreamInfo[num];
         for (int k = 0; k < num; k++)
             res[k] = new StreamInfo(buf[k]);
@@ -985,9 +985,22 @@ public class LSL {
                 inst = (dll)Native.loadLibrary((Platform.is64Bit() ? "liblsl64.dylib" : "liblsl32.dylib"),dll.class);
                 break;
             default:
-                inst = (dll)Native.loadLibrary((Platform.is64Bit() ? "liblsl64.so" : "liblsl32.so"),dll.class);
+                try
+                {
+                    inst = (dll)Native.loadLibrary((Platform.is64Bit() ? "liblsl64.so" : "liblsl32.so"),dll.class);
+                }
+                catch (UnsatisfiedLinkError e)
+                {
+                    e.printStackTrace();
+                }
+
                 if (inst == null)
+                {
+                    System.err.println("Could not load "
+                            +(Platform.is64Bit() ? "liblsl64.so" : "liblsl32.so")
+                            +". Trying to load liblsl.so");
                     inst = (dll)Native.loadLibrary("liblsl.so",dll.class);
+                }
                 break;
         }
     }
